@@ -1,53 +1,26 @@
 const Facility = require("../models/Facility");
 
-// GET /api/facilities
-exports.getFacilities = async (req, res) => {
+// ✅ GET all facilities
+const getAllFacilities = async (req, res) => {
   try {
     const facilities = await Facility.find();
-    res.json(facilities);
-  } catch (err) {
-    console.error("Error fetching facilities:", err);
-    res.status(500).json({ error: "Failed to fetch facilities" });
+    res.status(200).json(facilities);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching facilities", error });
   }
 };
 
-// POST /api/facilities
-exports.createFacility = async (req, res) => {
+// ✅ GET single facility by ID
+const getFacilityById = async (req, res) => {
   try {
-    const {
-      name,
-      type,
-      category,
-      upazila,
-      union,
-      open,
-      lat,
-      lon,
-      busAccess,
-      landmark,
-    } = req.body;
-
-    if (!name || !type || !category || !upazila || !union || !lat || !lon) {
-      return res.status(400).json({ success: false, error: "Missing required fields" });
+    const facility = await Facility.findById(req.params.id);
+    if (!facility) {
+      return res.status(404).json({ message: "Facility not found" });
     }
-
-    const newFacility = new Facility({
-      name,
-      type,
-      category,
-      upazila,
-      union,
-      open,
-      lat,
-      lon,
-      busAccess: busAccess || false,
-      landmark,
-    });
-
-    const saved = await newFacility.save();
-    res.json({ success: true, facilityId: saved._id });
-  } catch (err) {
-    console.error("Error saving facility:", err);
-    res.status(500).json({ success: false, error: "Server error" });
+    res.status(200).json(facility);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching facility", error });
   }
 };
+
+module.exports = { getAllFacilities, getFacilityById };

@@ -1,94 +1,12 @@
-// routes/facilities.js
 const express = require("express");
 const router = express.Router();
+const {
+  getAllFacilities,
+  getFacilityById
+} = require("../controllers/facilityController");
 
-// Sample dataset expanded for mission requirements.
-// Note: fields include: busAccess (boolean), landmark (string), category (string)
-const facilities = [
-  {
-    id: 1,
-    name: "চর কলাপাড়া কমিউনিটি ক্লিনিক",
-    type: "কমিউনিটি ক্লিনিক",
-    category: "primary_care",
-    upazila: "গলাচিপা",
-    union: "চর কলাপাড়া",
-    open: "মঙ্গলবার, বৃহস্পতিবার সকাল ৯টা–১২টা",
-    lat: 22.345,
-    lon: 90.235,
-    busAccess: false,
-    landmark: "বড় আম গাছের পাশে"
-  },
-  {
-    id: 2,
-    name: "ব্র্যাক হেলথ কর্নার",
-    type: "এনজিও স্বাস্থ্যকেন্দ্র",
-    category: "ngo",
-    upazila: "গলাচিপা",
-    union: "চর মন্টাজ",
-    open: "প্রতিদিন সকাল ৮টা–সন্ধ্যা ৫টা",
-    lat: 22.348,
-    lon: 90.240,
-    busAccess: true,
-    landmark: "বিদ্যালয়ের বিপরীতে"
-  },
-  {
-    id: 3,
-    name: "রফিক মেডিসিন হাউস",
-    type: "ফার্মেসি",
-    category: "pharmacy",
-    upazila: "গলাচিপা",
-    union: "চর কলাপাড়া",
-    open: "প্রতিদিন ২৪ ঘন্টা",
-    lat: 22.350,
-    lon: 90.245,
-    busAccess: true,
-    landmark: "মাঠের ধারে, শেখরের দোকানের পাশে"
-  },
-  // mental health / CHW examples
-  {
-    id: 4,
-    name: "মেলা খাঁন — CHW (Mental Health First Aid trained)",
-    type: "CHW - মানসিক স্বাস্থ্য",
-    category: "chw",
-    upazila: "গলাচিপা",
-    union: "চর কলাপাড়া",
-    open: "কল দিয়ে ঠিক করা",
-    lat: 22.347,
-    lon: 90.238,
-    busAccess: false,
-    landmark: "কমিউনিটি হলে পড়ার রুম"
-  },
-  {
-    id: 5,
-    name: "স্কুল কাউন্সেলর - চর কলাপাড়া স্কুল",
-    type: "স্কুল কাউন্সেলর",
-    category: "mental_support",
-    upazila: "গলাচিপা",
-    union: "চর মন্টাজ",
-    open: "শিক্ষক উপস্থিতি অনুযায়ী",
-    lat: 22.349,
-    lon: 90.242,
-    busAccess: false,
-    landmark: "স্কুল মাঠের পাশ"
-  },
-  // shared clinic between two villages (riddle case)
-  {
-    id: 6,
-    name: "মাঝপথ ক্লিনিক (Shared)",
-    type: "কমিউনিটি ক্লিনিক",
-    category: "primary_care",
-    upazila: "গলাচিপা",
-    union: "চর মেঘ",
-    open: "সোম-শুক্র সকাল",
-    lat: 22.360,
-    lon: 90.250,
-    busAccess: true,
-    landmark: "নালার পাশে"
-  }
-];
-
-router.get("/", (req, res) => {
-  res.json(facilities);
-});
+// Routes
+router.get("/", getAllFacilities);
+router.get("/:id", getFacilityById);
 
 module.exports = router;
