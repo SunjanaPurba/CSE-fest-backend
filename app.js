@@ -49,24 +49,22 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
-// import routes
 const products_routes = require("./routes/products");
 const facilities_routes = require("./routes/facilityRoutes");
 const request_routes = require("./routes/request");
 const healthTips_routes = require("./routes/healthTipsRoutes")
+const chatRoute = require('./routes/chatRoute');
 
-// basic route
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// use routes
 app.use("/api/products", products_routes);
 app.use("/api/facilities", facilities_routes);
 app.use("/api", request_routes); 
 app.use("/api/health-tips", healthTips_routes)
+app.use('/chat', chatRoute);
 
-// connect db and start server
 const start = async () => {
   try {
     await connectDB(process.env.MONGODB_URL);
