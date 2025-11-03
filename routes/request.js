@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { submitRequest } = require("../controllers/request");
+const anonymousController = require("../controllers/request");
 
-// POST request only
-router.post("/anonymous-request", submitRequest);
+router.get("/anon-name", anonymousController.getAnonName);
+router.post("/anonymous-request", anonymousController.postAnonymousRequest);
 
 module.exports = router;

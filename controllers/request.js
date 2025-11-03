@@ -1,36 +1,45 @@
-const Request = require("../models/Request");
+const AnonymousRequest = require("../models/Request");
 
-// Submit request (backend will generate anonymous name)
-exports.submitRequest = async (req, res) => {
+// Generate random anonymous name
+const generateAnonName = () => {
+  return "Guest-" + Math.floor(1000 + Math.random() * 9000);
+};
+
+// GET /api/anon-name
+exports.getAnonName = (req, res) => {
   try {
-    const { channel, message, shareContact } = req.body;
+    const name = generateAnonName();
+    res.json({ anonymousName: name });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to generate name" });
+  }
+};
 
-    if (!channel || !message) {
-      return res.status(400).json({ error: "Channel and message required" });
+// POST /api/anonymous-request
+exports.postAnonymousRequest = async (req, res) => {
+  try {
+    const { channel, anonymousName, message, shareContact } = req.body;
+
+    if (!channel || !anonymousName || !message) {
+      return res.status(400).json({ success: false, error: "Missing required fields" });
     }
 
-    // Generate anonymous name here
-    const rand = Math.floor(1000 + Math.random() * 9000);
-    const anonymousName = `Guest-${rand}`;
-
-    const requestId = `RB-${Math.floor(1000 + Math.random() * 9000)}`;
-
-    const newReq = await Request.create({
-      requestId,
+    const request = new AnonymousRequest({
       channel,
-      message,
-      shareContact: !!shareContact,
       anonymousName,
+      message,
+      shareContact: shareContact || false,
     });
+
+    const saved = await request.save();
 
     res.json({
       success: true,
-      message: "Request received successfully.",
-      requestId: newReq.requestId,
-      anonymousName, // Send generated name back to frontend
+      requestId: saved._id,
+      anonymousName: saved.anonymousName,
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
+    console.error("Error saving request:", err);
+    res.status(500).json({ success: false, error: "Server error" });
   }
 };

@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-const requestSchema = new mongoose.Schema({
-  requestId: { type: String, required: true, unique: true },
+const AnonymousRequestSchema = new mongoose.Schema({
   anonymousName: { type: String, required: true },
+  channel: { type: String, required: true },
   message: { type: String, required: true },
   shareContact: { type: Boolean, default: false },
-  channel: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Request", requestSchema);
+module.exports = mongoose.model("AnonymousRequest", AnonymousRequestSchema);
+
