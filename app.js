@@ -2,12 +2,15 @@ const express = require("express");
 const app = express();
 const connectDB = require("./db/connect");
 const dns = require("dns");
+const cors = require('cors');
 require("dotenv").config();
+
 
 // DNS override
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 const products_routes = require("./routes/products");
