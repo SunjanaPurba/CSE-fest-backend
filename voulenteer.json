@@ -1,0 +1,98 @@
+[
+    {
+        "name": "রহিমা বেগম",
+        "village": "গ্রাম ১",
+        "skills": ["Mental health support", "First aid", "Maternal health"],
+        "contact": {
+            "phone": "01712345678",
+            "whatsapp": true,
+            "hours": "9 AM - 5 PM"
+        },
+        "verification": "Trained by NGO A",
+        "image": "https://images.unsplash.com/photo-1607746882042-944635dfe10e"
+    },
+    {
+        "name": "আলমগীর হোসেন",
+        "village": "গ্রাম ২",
+        "skills": ["Chronic disease support", "Child health"],
+        "contact": {
+            "phone": "01812345678",
+            "whatsapp": false,
+            "hours": "10 AM - 4 PM"
+        },
+        "verification": "Trained by NGO B",
+        "image": "https://images.unsplash.com/photo-1600180758890-6d9c0f1eebc3"
+    },
+    {
+        "name": "সুরাইয়া সুলতানা",
+        "village": "গ্রাম ৩",
+        "skills": ["First aid", "Maternal health"],
+        "contact": {
+            "phone": "01912345678",
+            "whatsapp": true,
+            "hours": "8 AM - 6 PM"
+        },
+        "verification": "Trained by NGO C",
+        "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f"
+    },
+    {
+        "name": "তৌহিদুল ইসলাম",
+        "village": "গ্রাম ৪",
+        "skills": ["Mental health support", "Chronic disease support"],
+        "contact": {
+            "phone": "02012345678",
+            "whatsapp": true,
+            "hours": "1 PM - 5 PM"
+        },
+        "verification": "Trained by NGO D",
+        "image": "https://images.unsplash.com/photo-1607746882042-944635dfe10e"
+    },
+    {
+        "name": "ফাতেমা জান্নাত",
+        "village": "গ্রাম ৫",
+        "skills": ["Child health", "Maternal health"],
+        "contact": {
+            "phone": "02112345678",
+            "whatsapp": false,
+            "hours": "9 AM - 3 PM"
+        },
+        "verification": "Trained by NGO E",
+        "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f"
+    },
+    {
+        "name": "মোহাম্মদ সেলিম",
+        "village": "গ্রাম ৬",
+        "skills": ["First aid", "Mental health support"],
+        "contact": {
+            "phone": "02212345678",
+            "whatsapp": true,
+            "hours": "10 AM - 4 PM"
+        },
+        "verification": "Trained by NGO F",
+        "image": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6"
+    },
+    {
+        "name": "নাজমুল হক",
+        "village": "গ্রাম ৭",
+        "skills": ["Chronic disease support", "Child health"],
+        "contact": {
+            "phone": "02312345678",
+            "whatsapp": false,
+            "hours": "11 AM - 5 PM"
+        },
+        "verification": "Trained by NGO G",
+        "image": "https://images.unsplash.com/photo-1599566150163-29194dcaad36"
+    },
+    {
+        "name": "সাহেরা আক্তার",
+        "village": "গ্রাম ৮",
+        "skills": ["Maternal health", "First aid"],
+        "contact": {
+            "phone": "02412345678",
+            "whatsapp": true,
+            "hours": "9 AM - 6 PM"
+        },
+        "verification": "Trained by NGO H",
+        "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f"
+    }
+]

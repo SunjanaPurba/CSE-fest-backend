@@ -54,6 +54,8 @@ const facilities_routes = require("./routes/facilityRoutes");
 const request_routes = require("./routes/request");
 const healthTips_routes = require("./routes/healthTipsRoutes")
 const chatRoute = require('./routes/chatRoute');
+const event_routes = require("./routes/eventRoutes");
+const volunteerRoutes = require("./routes/volunteerRoutes");
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -64,6 +66,8 @@ app.use("/api/facilities", facilities_routes);
 app.use("/api", request_routes); 
 app.use("/api/health-tips", healthTips_routes)
 app.use('/chat', chatRoute);
+app.use("/api/event", event_routes);
+app.use("/api/volunteers", volunteerRoutes);
 
 const start = async () => {
   try {

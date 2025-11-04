@@ -3,10 +3,14 @@ const connectDB = require("./db/connect");
 const Product = require("./models/product");
 const Facility = require("./models/Facility");
 const HealthTip = require("./models/HealthTip");
+const Event = require("./models/Event");
+const Volunteer = require("./models/Volunteer");
+const volunteersData = require("./voulenteer.json");
 
 const ProductsJson = require("./products.json");
 const facilitiesData = require("./facilities.json");
 const healthTipsData = require("./healthTips.json");
+const eventsData = require("./healthEvents.json");
 
 const start = async () => {
   try {
@@ -17,6 +21,10 @@ const start = async () => {
     await Facility.create(facilitiesData);
     await HealthTip.deleteMany();
     await HealthTip.create(healthTipsData.seasons);
+    await Event.deleteMany();
+    await Event.create(eventsData.events);
+    await Volunteer.deleteMany();
+    await Volunteer.create(volunteersData);
     console.log("Success");
   } catch (error) {
     console.log(error);
