@@ -8,7 +8,6 @@ const {
   getEmergencyContacts
 } = require("../controllers/healthTipsController");
 
-// Routes
 router.get("/", getAllHealthTips);
 router.get("/current", getCurrentSeasonTips);
 router.get("/season/:seasonId", getSeasonTips);

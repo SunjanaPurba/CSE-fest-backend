@@ -1,11 +1,8 @@
 const AnonymousRequest = require("../models/Request");
 
-// Generate random anonymous name
 const generateAnonName = () => {
   return "Guest-" + Math.floor(1000 + Math.random() * 9000);
 };
-
-// GET /api/anon-name
 exports.getAnonName = (req, res) => {
   try {
     const name = generateAnonName();
@@ -15,7 +12,6 @@ exports.getAnonName = (req, res) => {
   }
 };
 
-// POST /api/anonymous-request
 exports.postAnonymousRequest = async (req, res) => {
   try {
     const { channel, anonymousName, message, shareContact } = req.body;

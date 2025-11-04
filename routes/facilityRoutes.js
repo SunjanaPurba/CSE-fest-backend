@@ -5,7 +5,6 @@ const {
   getFacilityById
 } = require("../controllers/facilityController");
 
-// Routes
 router.get("/", getAllFacilities);
 router.get("/:id", getFacilityById);
 

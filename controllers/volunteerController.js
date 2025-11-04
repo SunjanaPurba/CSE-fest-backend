@@ -1,4 +1,3 @@
-// controllers/volunteerController.js
 const Volunteer = require('../models/Volunteer');
 
 exports.getAllVolunteers = async (req, res) => {
