@@ -1,33 +1,48 @@
 require("dotenv").config();
 const connectDB = require("./db/connect");
+
 const Product = require("./models/product");
 const Facility = require("./models/Facility");
 const HealthTip = require("./models/HealthTip");
 const Event = require("./models/Event");
 const Volunteer = require("./models/Volunteer");
-const volunteersData = require("./voulenteer.json");
+const Symptom = require("./models/Symptom"); // ✅ new
 
+// JSON data imports
 const ProductsJson = require("./products.json");
 const facilitiesData = require("./facilities.json");
 const healthTipsData = require("./healthTips.json");
 const eventsData = require("./healthEvents.json");
+const volunteersData = require("./voulenteer.json");
+const symptomData = require("./symptom.json"); // ✅ new
 
 const start = async () => {
   try {
     await connectDB(process.env.MONGODB_URL);
+
     await Product.deleteMany();
     await Product.create(ProductsJson);
+
     await Facility.deleteMany();
     await Facility.create(facilitiesData);
+
     await HealthTip.deleteMany();
     await HealthTip.create(healthTipsData.seasons);
+
     await Event.deleteMany();
     await Event.create(eventsData.events);
+
     await Volunteer.deleteMany();
     await Volunteer.create(volunteersData);
-    console.log("Success");
+
+    await Symptom.deleteMany(); // ✅ new
+    await Symptom.create(symptomData); // ✅ new
+
+    console.log("✅ Database Seed Successful!");
+    process.exit(0);
   } catch (error) {
-    console.log(error);
+    console.error("❌ Seed Error:", error);
+    process.exit(1);
   }
 };
 

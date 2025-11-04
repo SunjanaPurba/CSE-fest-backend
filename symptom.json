@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Diarrhea",
+    "danger_signs": "3+ days, blood in stool, or dehydration signs",
+    "action": "See a doctor immediately. Give ORS meanwhile."
+  },
+  {
+    "id": 2,
+    "name": "Chest Pain",
+    "danger_signs": "Persistent or severe chest pain",
+    "action": "Go to hospital immediately. Could be serious."
+  },
+  {
+    "id": 3,
+    "name": "Mental Health",
+    "danger_signs": "Sad for 2+ weeks, can’t enjoy things",
+    "action": "Talk to someone. It's not a weakness."
+  }
+]
