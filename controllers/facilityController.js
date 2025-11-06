@@ -1,6 +1,5 @@
 const Facility = require("../models/Facility");
 
-// ✅ GET all facilities
 const getAllFacilities = async (req, res) => {
   try {
     const facilities = await Facility.find();
@@ -9,8 +8,6 @@ const getAllFacilities = async (req, res) => {
     res.status(500).json({ message: "Error fetching facilities", error });
   }
 };
-
-// ✅ GET single facility by ID
 const getFacilityById = async (req, res) => {
   try {
     const facility = await Facility.findById(req.params.id);

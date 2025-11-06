@@ -6,15 +6,14 @@ const Facility = require("./models/Facility");
 const HealthTip = require("./models/HealthTip");
 const Event = require("./models/Event");
 const Volunteer = require("./models/Volunteer");
-const Symptom = require("./models/Symptom"); // ✅ new
+const Symptom = require("./models/Symptom");
 
-// JSON data imports
 const ProductsJson = require("./products.json");
 const facilitiesData = require("./facilities.json");
 const healthTipsData = require("./healthTips.json");
 const eventsData = require("./healthEvents.json");
 const volunteersData = require("./voulenteer.json");
-const symptomData = require("./symptom.json"); // ✅ new
+const symptomData = require("./symptom.json");
 
 const start = async () => {
   try {
@@ -35,8 +34,8 @@ const start = async () => {
     await Volunteer.deleteMany();
     await Volunteer.create(volunteersData);
 
-    await Symptom.deleteMany(); // ✅ new
-    await Symptom.create(symptomData); // ✅ new
+    await Symptom.deleteMany();
+    await Symptom.create(symptomData);
 
     console.log("✅ Database Seed Successful!");
     process.exit(0);
